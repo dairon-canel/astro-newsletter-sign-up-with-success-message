@@ -17,7 +17,9 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <slot />
+    <main>
+      <slot />
+    </main>
   </body>
 </html>
 <style is:global>
@@ -107,5 +109,11 @@ const { title } = Astro.props;
     background-color: white;
     font-family: 'Roboto Regular', sans-serif;
     font-size: 16px;
+  }
+
+  main {
+    min-height: 100vh;
+    display: grid;
+    background-color: white;
   }
 </style>
