@@ -1,0 +1,56 @@
+---
+export interface Props {
+  id: string;
+  label: string;
+  value?: string;
+  errors?: string;
+  placeholder?: string;
+  minLength?: number;
+  maxLength?: number;
+  required?: boolean;
+  type?: 'text' | 'number' | 'email';
+  inputStyle?: string;
+  inputClass?: string;
+  error?: string;
+  pattern?: string;
+}
+
+const {
+  value,
+  error,
+  id,
+  placeholder,
+  label,
+  minLength,
+  maxLength,
+  required,
+  type,
+  inputStyle,
+  inputClass,
+  pattern,
+} = Astro.props;
+---
+
+<div class="form_section__input_container" style={inputStyle}>
+  <label class="input_label">
+    {label}
+    <input
+      class:list={[
+        'form_section_input',
+        { form_section_input_error: error },
+        inputClass,
+      ]}
+      type={type}
+      name={id}
+      id={id}
+      placeholder={placeholder}
+      minlength={minLength ?? null}
+      maxlength={maxLength ?? null}
+      required={required ?? false}
+      autocomplete="off"
+      value={value ?? ''}
+      pattern={pattern ?? null}
+    />
+  </label>
+  <span aria-live="polite" class="error_container">{error ?? ' '}</span>
+</div>

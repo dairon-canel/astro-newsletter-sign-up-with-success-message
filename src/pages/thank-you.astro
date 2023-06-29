@@ -1,0 +1,33 @@
+---
+import Button from '../components/Button.astro';
+import Layout from '../layouts/Layout.astro';
+
+let data;
+
+if (!Astro.cookies.has('success')) {
+  return Astro.redirect('/');
+}
+
+if (Astro.cookies.has('data')) {
+  data = Astro.cookies.get('data').json();
+
+  Astro.cookies.delete('data');
+  Astro.cookies.delete('success');
+  Astro.cookies.delete('errors');
+}
+---
+
+<Layout title="Frontend Mentor | Thanks for testing!">
+  Thanks for subscribing! A confirmation email has been sent to
+  {data.email}. Please open it and click the button inside to confirm your
+  subscription. Dismiss message
+  <Button href="/">Continue</Button>
+</Layout>
+
+<script>
+  import JSConfetti from 'js-confetti';
+
+  const jsConfetti = new JSConfetti();
+
+  jsConfetti.addConfetti();
+</script>
