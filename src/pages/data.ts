@@ -18,11 +18,15 @@ export async function post({ request, cookies, redirect }: APIContext) {
 
   const emailRegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-  if (typeof email !== 'string' || !emailRegExp.test(email)) {
-    errors.email += 'Valid email required';
+  if (!email) {
+    errors.email += 'Email required';
+    cookies.set('errors', errors);
+
+    return redirect('/', 301);
   }
 
-  if (Object.values(errors).some(e => e !== '')) {
+  if (typeof email !== 'string' || !emailRegExp.test(email)) {
+    errors.email += 'Valid email required';
     cookies.set('errors', errors);
 
     return redirect('/', 301);
