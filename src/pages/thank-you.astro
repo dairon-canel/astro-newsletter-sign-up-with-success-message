@@ -4,9 +4,9 @@ import Layout from '../layouts/Layout.astro';
 
 let data;
 
-/* if (!Astro.cookies.has('success')) {
+if (!Astro.cookies.has('success')) {
   return Astro.redirect('/');
-} */
+}
 
 if (Astro.cookies.has('data')) {
   data = Astro.cookies.get('data').json();
@@ -23,12 +23,11 @@ if (Astro.cookies.has('data')) {
       <h1 class="thank_you__title">Thanks for subscribing!</h1>
       <p class="thank_you__message">
         A confirmation email has been sent to
-        <!-- {data.email} -->
-        <span class="thank_you__email">ash@loremcompany.com</span>. Please open
-        it and click the button inside to confirm your subscription
+        <span class="thank_you__email">{data.email}</span>. Please open it and
+        click the button inside to confirm your subscription
       </p>
     </section>
-    <Button href="/">Dismiss message</Button>
+    <Button class="custom_button" href="/">Dismiss message</Button>
   </main>
 </Layout>
 
@@ -78,5 +77,40 @@ if (Astro.cookies.has('data')) {
 
   .thank_you__email {
     font-family: 'Roboto Bold';
+  }
+
+  @media screen and (min-width: 1000px) {
+    main {
+      margin-top: 30px;
+      width: 504px;
+      height: 522px;
+      min-height: auto;
+      border-radius: 38px;
+      padding-left: 64px;
+      justify-content: start;
+    }
+
+    .thank_you {
+      padding-top: 50px;
+      background-position-y: 50px;
+    }
+
+    .thank_you__title {
+      margin-top: 104px;
+      font-family: 'Roboto Bold';
+      line-height: 56px;
+      font-size: 56px;
+      color: var(--dark-slate-grey);
+    }
+
+    .thank_you__message {
+      max-width: 370px;
+    }
+
+    .custom_button {
+      margin-top: 2px;
+      margin-bottom: 0px;
+      width: 375px;
+    }
   }
 </style>
