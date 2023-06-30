@@ -4,23 +4,36 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Frontend Mentor | Newsletter sign-up form with success message">
-  <h1 class="newsletter__title">Stay updated!</h1>
-  <p class="newsletter__description">
-    Join 60,000+ product managers receiving monthly updates on:
-  </p>
-  <ul class="newsletter__description_list">
-    <li class="newsletter__description_list_item">
-      Product discovery and building what matters
-    </li>
-    <li class="newsletter__description_list_item">
-      Measuring to ensure updates are a success
-    </li>
-    <li class="newsletter__description_list_item">And much more!</li>
-  </ul>
-  <Form />
+  <main>
+    <h1 class="newsletter__title">Stay updated!</h1>
+    <p class="newsletter__description">
+      Join 60,000+ product managers receiving monthly updates on:
+    </p>
+    <ul class="newsletter__description_list">
+      <li class="newsletter__description_list_item">
+        Product discovery and building what matters
+      </li>
+      <li class="newsletter__description_list_item">
+        Measuring to ensure updates are a success
+      </li>
+      <li class="newsletter__description_list_item">And much more!</li>
+    </ul>
+    <Form />
+  </main>
 </Layout>
 
 <style>
+  main {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    background-image: url(/images/illustration-sign-up-mobile.svg);
+    background-repeat: no-repeat;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
   .newsletter__title {
     font-family: 'Roboto Bold';
     margin-top: 314px;
@@ -52,5 +65,32 @@ import Layout from '../layouts/Layout.astro';
     height: 21px;
     top: 1px;
     left: -38px;
+  }
+
+  @media screen and (min-width: 1000px) {
+    main {
+      background-image: url(/images/illustration-sign-up-desktop.svg);
+      background-position: right 24px top 24px;
+      width: 928px;
+      min-height: auto;
+      border-radius: 38px;
+      padding-left: 64px;
+    }
+
+    .newsletter__title {
+      margin-top: 83px;
+      font-size: 56px;
+    }
+
+    .newsletter__description {
+      margin-top: 11px;
+      max-width: 370px;
+    }
+
+    .newsletter__description_list {
+      margin-top: 24px;
+      margin-bottom: 28px;
+      list-style: none;
+    }
   }
 </style>

@@ -17,9 +17,7 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <main>
-      <slot />
-    </main>
+    <slot />
   </body>
 </html>
 <style is:global>
@@ -106,20 +104,21 @@ const { title } = Astro.props;
     --white: hsl(0, 0%, 100%);
   }
   html {
-    background-color: white;
+    background-color: var(--charcoal-grey);
     font-family: 'Roboto Regular', sans-serif;
     font-size: 16px;
   }
 
-  main {
-    position: relative;
-    min-height: 100vh;
+  body {
     display: flex;
     flex-direction: column;
-    background-color: white;
-    background-image: url(/images/illustration-sign-up-mobile.svg);
-    background-repeat: no-repeat;
-    padding-left: 24px;
-    padding-right: 24px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 1000px) {
+    body {
+      min-height: 100vh;
+    }
   }
 </style>
