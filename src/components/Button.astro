@@ -17,6 +17,7 @@ const Element = href ? 'a' : 'button';
 <style>
   .custom_button {
     font-family: 'Roboto Bold';
+    position: relative;
     margin-top: 23px;
     margin-bottom: 40px;
     height: 58px;
@@ -24,6 +25,27 @@ const Element = href ? 'a' : 'button';
     background-color: var(--dark-slate-grey);
     color: white;
     border-radius: 7px;
+    z-index: 1;
+  }
+
+  .custom_button:before {
+    position: absolute;
+    content: '';
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 7px;
+    background-image: linear-gradient(to right, var(--pink), var(--orange));
+    z-index: -1;
+    transition: opacity 0.2s ease;
+    opacity: 0;
+  }
+
+  .custom_button:hover::before,
+  .custom_button:hover {
+    cursor: pointer;
+    opacity: 1;
   }
 
   a {
