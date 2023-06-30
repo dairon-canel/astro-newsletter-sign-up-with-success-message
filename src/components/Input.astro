@@ -34,6 +34,7 @@ const {
 <div class="form_section__input_container" style={inputStyle}>
   <label class="input_label">
     {label}
+    <span aria-live="polite" class="error_container">{error ?? ' '}</span>
     <input
       class:list={[
         'form_section_input',
@@ -52,5 +53,51 @@ const {
       pattern={pattern ?? null}
     />
   </label>
-  <span aria-live="polite" class="error_container">{error ?? ' '}</span>
 </div>
+
+<style>
+  .form_section__input_container {
+    position: relative;
+    display: grid;
+  }
+
+  .input_label {
+    font-family: 'Roboto Bold';
+    display: flex;
+    flex-direction: column;
+    font-size: small;
+    color: var(--dark-slate-grey);
+  }
+
+  .form_section_input {
+    margin-top: 7px;
+    padding-bottom: 3px;
+    padding-left: 23px;
+    height: 56px;
+    border-radius: 7px;
+    border: 1px solid var(--grey);
+    font-size: medium;
+  }
+  .form_section_input::placeholder {
+    color: var(--grey);
+  }
+  .form_section_input:focus,
+  .form_section_input:focus-visible,
+  .form_section_input:focus-within {
+    outline: none !important;
+    border: 1px solid var(--dark-slate-grey);
+    border-radius: 7px;
+  }
+
+  .form_section_input_error {
+    outline: none !important;
+    border: 2px solid var(--errors);
+  }
+
+  .error_container {
+    position: absolute;
+    right: 0;
+    font-size: small;
+    color: var(--tomato);
+  }
+</style>

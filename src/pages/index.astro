@@ -4,11 +4,53 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Frontend Mentor | Newsletter sign-up form with success message">
+  <h1 class="newsletter__title">Stay updated!</h1>
+  <p class="newsletter__description">
+    Join 60,000+ product managers receiving monthly updates on:
+  </p>
+  <ul class="newsletter__description_list">
+    <li class="newsletter__description_list_item">
+      Product discovery and building what matters
+    </li>
+    <li class="newsletter__description_list_item">
+      Measuring to ensure updates are a success
+    </li>
+    <li class="newsletter__description_list_item">And much more!</li>
+  </ul>
   <Form />
-  <!-- Sign-up form start -->
-
-  Stay updated! Join 60,000+ product managers receiving monthly updates on:
-  Product discovery and building what matters Measuring to ensure updates are a
-  success And much more! Email address email@company.com Subscribe to monthly
-  newsletter
 </Layout>
+
+<style>
+  .newsletter__title {
+    font-family: 'Roboto Bold';
+    margin-top: 314px;
+    font-size: 40px;
+    color: var(--dark-slate-grey);
+  }
+
+  .newsletter__description {
+    margin-top: 14px;
+    color: var(--dark-slate-grey);
+  }
+
+  .newsletter__description_list {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    list-style: none;
+  }
+
+  .newsletter__description_list_item {
+    position: relative;
+    margin-bottom: 10px;
+    margin-left: -3px;
+  }
+  .newsletter__description_list_item::before {
+    content: '';
+    position: absolute;
+    background-image: url(/images/icon-list.svg);
+    width: 21px;
+    height: 21px;
+    top: 1px;
+    left: -38px;
+  }
+</style>

@@ -112,8 +112,14 @@ const { title } = Astro.props;
   }
 
   main {
+    position: relative;
     min-height: 100vh;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     background-color: white;
+    background-image: url(/images/illustration-sign-up-mobile.svg);
+    background-repeat: no-repeat;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 </style>
