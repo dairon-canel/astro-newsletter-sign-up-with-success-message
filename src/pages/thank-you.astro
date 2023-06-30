@@ -4,9 +4,9 @@ import Layout from '../layouts/Layout.astro';
 
 let data;
 
-if (!Astro.cookies.has('success')) {
+/* if (!Astro.cookies.has('success')) {
   return Astro.redirect('/');
-}
+} */
 
 if (Astro.cookies.has('data')) {
   data = Astro.cookies.get('data').json();
@@ -18,10 +18,18 @@ if (Astro.cookies.has('data')) {
 ---
 
 <Layout title="Frontend Mentor | Thanks for testing!">
-  Thanks for subscribing! A confirmation email has been sent to
-  {data.email}. Please open it and click the button inside to confirm your
-  subscription. Dismiss message
-  <Button href="/">Continue</Button>
+  <main>
+    <section class="thank_you">
+      <h1 class="thank_you__title">Thanks for subscribing!</h1>
+      <p class="thank_you__message">
+        A confirmation email has been sent to
+        <!-- {data.email} -->
+        <span class="thank_you__email">ash@loremcompany.com</span>. Please open
+        it and click the button inside to confirm your subscription
+      </p>
+    </section>
+    <Button href="/">Dismiss message</Button>
+  </main>
 </Layout>
 
 <script>
@@ -31,3 +39,44 @@ if (Astro.cookies.has('data')) {
 
   jsConfetti.addConfetti();
 </script>
+
+<style>
+  main {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    justify-content: space-around;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .thank_you {
+    height: 400px;
+    padding-top: 60px;
+    background-image: url(/images/icon-success.svg);
+    background-repeat: no-repeat;
+    display: flex;
+    background-position-y: 60px;
+    flex-direction: column;
+    justify-items: center;
+  }
+
+  .thank_you__title {
+    margin-top: 104px;
+    font-family: 'Roboto Bold';
+    line-height: 40px;
+    font-size: 40px;
+    color: var(--dark-slate-grey);
+  }
+
+  .thank_you__message {
+    margin-top: 24px;
+    color: var(--dark-slate-grey);
+  }
+
+  .thank_you__email {
+    font-family: 'Roboto Bold';
+  }
+</style>
